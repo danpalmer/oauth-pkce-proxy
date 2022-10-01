@@ -1,6 +1,7 @@
 GEM
   remote: https://rubygems.org/
   specs:
+    connection_pool (2.3.0)
     dotenv (2.7.5)
     httparty (0.18.1)
       mime-types (~> 3.0)
@@ -17,6 +18,10 @@ GEM
     rack-protection (2.2.0)
       rack
     rake (13.0.3)
+    redis (5.0.5)
+      redis-client (>= 0.9.0)
+    redis-client (0.9.0)
+      connection_pool
     ruby2_keywords (0.0.5)
     sinatra (2.2.0)
       mustermann (~> 1.0)
@@ -39,8 +44,9 @@ DEPENDENCIES
   httparty
   minitest
   rake
+  redis
   sinatra
   sinatra-contrib
 
 BUNDLED WITH
-   2.2.4
+   2.3.22
