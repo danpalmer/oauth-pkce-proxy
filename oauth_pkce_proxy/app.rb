@@ -68,6 +68,10 @@ module OauthPkceProxy
       end
     end
 
+    post '/oauth/refresh_token' do
+      exchange_code_for_access_token(params)
+    end
+
     private
 
     def authorize_params(request, params)
