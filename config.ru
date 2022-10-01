@@ -16,4 +16,5 @@ provider = OauthPkceProxy::Provider.new(
 
 redis = RedisStore.new(url: ENV['REDIS_URL'])
 
+set :port, 8080
 run OauthPkceProxy::App.new(provider: provider, challenge_store: redis)
