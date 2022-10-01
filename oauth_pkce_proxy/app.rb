@@ -1,6 +1,7 @@
 require 'sinatra/reloader'
 require 'sinatra/json'
 require 'httparty'
+require 'uri'
 
 require_relative 'pkce'
 
@@ -48,7 +49,7 @@ module OauthPkceProxy
     get '/oauth/code' do
       challenge_store.set(params[:code], session[:code_challenge])
 
-      redirect to(session[:original_redirect_uri] + "?code=#{params[:code]}")
+      redirect to(session[:original_redirect_uri] + "&code=#{params[:code]}")
     end
 
     post '/oauth/access_token' do
