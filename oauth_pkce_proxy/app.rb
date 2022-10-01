@@ -68,7 +68,7 @@ module OauthPkceProxy
       end
     end
 
-    post '/oauth/refresh_token' do
+    post '/oauth/refresh' do
       exchange_code_for_access_token(params)
     end
 
