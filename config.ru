@@ -6,25 +6,14 @@ Bundler.require
 require 'dotenv/load'
 
 require_relative 'oauth_pkce_proxy/app'
+require_relative 'oauth_pkce_proxy/redis'
 
-class InMemoryStore
-  def initialize
-    @data = {}
-  end
-
-  def get(key)
-    @data[key]
-  end
-
-  def set(key, value)
-    @data[key] = value
-  end
-end
-
-github = OauthPkceProxy::Provider.new(
-  client_secret: ENV['GITHUB_OAUTH_CLIENT_SECRET'],
-  authorize_url: 'https://github.com/login/oauth/authorize',
-  access_token_url: 'https://github.com/login/oauth/access_token'
+provider = OauthPkceProxy::Provider.new(
+  client_secret: ENV['OAUTH_CLIENT_SECRET'],
+  authorize_url: ENV['OAUTH_AUTHORIZE_URL'],
+  access_token_url: ENV['OAUTH_ACCESS_TOKEN_URL'],
 )
 
-run OauthPkceProxy::App.new(provider: github, challenge_store: InMemoryStore.new)
+redis = RedisStore.new(url: ENV['REDIS_URL'])
+
+run OauthPkceProxy::App.new(provider: provider, challenge_store: redis)
