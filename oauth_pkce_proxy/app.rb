@@ -49,7 +49,7 @@ module OauthPkceProxy
     get '/oauth/code' do
       challenge_store.set(params[:code], session[:code_challenge])
 
-      redirect to(session[:original_redirect_uri] + "&code=#{params[:code]}")
+      redirect to(session[:original_redirect_uri] + "&code=#{params[:code]}&state=#{params[:state]}")
     end
 
     post '/oauth/access_token' do
