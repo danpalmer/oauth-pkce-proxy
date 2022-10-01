@@ -77,9 +77,18 @@ module OauthPkceProxy
     end
 
     def exchange_code_for_access_token(params)
+      body = params
+
+      body[:client_secret] = provider.client_secret
+      body.delete :code_verifier
+
+      if body.has_key?(:redirect_uri)
+        body[:redirect_uri] = "#{request.base_url}/oauth/code"
+      end
+
       to_rack_response HTTParty.post(
         provider.access_token_url,
-        query: params.merge(client_secret: provider.client_secret)
+        body: body
       )
     end
 
