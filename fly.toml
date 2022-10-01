@@ -4,10 +4,12 @@ kill_timeout = 5
 processes = []
 
 [build]
-  builder = "heroku/buildpacks:20"
+  builder = "paketobuildpacks/builder:base"
+  buildpacks = ["gcr.io/paketo-buildpacks/ruby"]
 
 [env]
   PORT = "8080"
+  APP_ENV = "production"
 
 [experimental]
   allowed_public_ports = []
