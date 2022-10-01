@@ -30,6 +30,10 @@ module OauthPkceProxy
 
     enable :sessions
 
+    get '/' do
+      "Running..."
+    end
+
     get '/oauth/authorize' do
       if params[:code_challenge].nil?
         halt 400, 'code_challenge param was missing'
@@ -61,10 +65,6 @@ module OauthPkceProxy
       else
         halt 400, "code_verifier does not match code_challenge for this code"
       end
-    end
-
-    get '/example_client_code_handler' do
-      "Success - the code was: #{params[:code]}"
     end
 
     private

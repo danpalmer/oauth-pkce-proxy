@@ -8,7 +8,7 @@ processes = []
   buildpacks = ["gcr.io/paketo-buildpacks/ruby"]
 
 [env]
-  PORT = "8080"
+  PORT = "9292"
   APP_ENV = "production"
 
 [experimental]
@@ -17,7 +17,7 @@ processes = []
 
 [[services]]
   http_checks = []
-  internal_port = 8080
+  internal_port = 9292
   processes = ["app"]
   protocol = "tcp"
   script_checks = []

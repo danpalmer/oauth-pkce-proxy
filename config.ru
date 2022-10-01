@@ -6,7 +6,7 @@ Bundler.require
 require 'dotenv/load'
 
 require_relative 'oauth_pkce_proxy/app'
-require_relative 'oauth_pkce_proxy/redis'
+require_relative 'oauth_pkce_proxy/redis_store'
 
 provider = OauthPkceProxy::Provider.new(
   client_secret: ENV['OAUTH_CLIENT_SECRET'],
