@@ -14,7 +14,8 @@ provider = OauthPkceProxy::Provider.new(
   access_token_url: ENV['OAUTH_ACCESS_TOKEN_URL'],
 )
 
-redis = RedisStore.new(url: ENV['REDIS_URL'])
+redis = RedisStore.new(ENV['REDIS_URL'])
 
 set :port, ENV['PORT']
+set :bind, '0.0.0.0'
 run OauthPkceProxy::App.new(provider: provider, challenge_store: redis)
