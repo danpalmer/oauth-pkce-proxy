@@ -15,6 +15,14 @@ The latter is designed to support [esoteric OAuth implementations](https://devel
 
 `oauth-pkce-proxy` is a lightweight Python application, based on Falcon and Uvicorn. It uses Redis for ephemeral storage.
 
+### Deployment
+
+Docker is recommended, but it's a simple Python app so there are many options. The configuration parameters are:
+
+| Parameter   | Description                                                |
+| ----------- | ---------------------------------------------------------- |
+| `REDIS_URL` | A URL to a Redis instance to be used for ephemeral storage |
+
 ### Thanks
 
-Thanks to @lukeredpath for his [prototype Ruby implementation](https://github.com/lukeredpath/oauth-pkce-proxy). It provided a great foundation for the understanding of the process.
+Thanks to [@lukeredpath](https://github.com/lukeredpath) for his [prototype Ruby implementation](https://github.com/lukeredpath/oauth-pkce-proxy). It provided a great foundation for the understanding of the process.
