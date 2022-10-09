@@ -56,7 +56,7 @@ class AuthorizeResource:
 
         redirect_params = req.params.copy()
         del redirect_params["x_authorize_url"]
-        redirect_uri = urllib.parse.urlparse(req.uri)
+        redirect_uri = urllib.parse.urlparse(req.forwarded_uri)
         redirect_uri = redirect_uri._replace(path=req.root_path + "/code")
         redirect_uri = redirect_uri._replace(query="")
         redirect_uri = redirect_params["redirect_uri"] = urllib.parse.urlunparse(
@@ -152,7 +152,7 @@ class AccessTokenResource:
         del redirect_body["x_client_secret"]
         del redirect_body["x_access_token_uri"]
         if "redirect_uri" in redirect_body:
-            redirect_uri = urllib.parse.urlparse(req.uri)
+            redirect_uri = urllib.parse.urlparse(req.forwarded_uri)
             redirect_uri = redirect_uri._replace(path=req.root_path + "/code")
             redirect_uri = redirect_uri._replace(query="")
             redirect_body["redirect_uri"] = urllib.parse.urlunparse(redirect_uri)
