@@ -1,11 +1,13 @@
-app = "oauth-pkce-proxy-monzo"
+# fly.toml file generated for oauth-pkce-proxy-public on 2022-10-09T17:16:17+01:00
+
+app = "oauth-pkce-proxy-public"
 kill_signal = "SIGINT"
 kill_timeout = 5
 processes = []
 
 [env]
-  PORT = "8080"
   APP_ENV = "production"
+  PORT = "8000"
 
 [experimental]
   allowed_public_ports = []
@@ -13,7 +15,7 @@ processes = []
 
 [[services]]
   http_checks = []
-  internal_port = 8080
+  internal_port = 8000
   processes = ["app"]
   protocol = "tcp"
   script_checks = []

@@ -1,0 +1,9 @@
+falcon>=3.*
+uvicorn
+pkce
+httpx
+redis
+
+# Development
+black
+isort
